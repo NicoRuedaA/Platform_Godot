@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://tilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://Sprites/backgrounds/negro.jpg" type="Texture" id=2]
+[ext_resource path="res://Objects/camera/Camera2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Sapo/SapoMafioso.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/boceto.jpg" type="Texture" id=5]
+[ext_resource path="res://Levels/Level 1/toScene.gd" type="Script" id=6]
+[ext_resource path="res://Objects/Box/box.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 169, 37 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="toLevel" type="Node2D" parent="."]
+
+[node name="level1_4to1_2" type="Area2D" parent="toLevel"]
+position = Vector2( 0, -32 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="toLevel/level1_4to1_2"]
+position = Vector2( 159, -27 )
+shape = SubResource( 1 )
+
+[node name="Escena" type="Node2D" parent="."]
+
+[node name="Boceto" type="Sprite" parent="Escena"]
+visible = false
+position = Vector2( 2231, -1654 )
+scale = Vector2( 4.11068, 4.11068 )
+texture = ExtResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="Escena"]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 65535, 8, 0, 0, 8, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 8, 0, 9, 8, 0, 10, 8, 0, 11, 8, 0, 12, 8, 0, 13, 8, 0, 14, 8, 0, 15, 8, 0, 16, 8, 0, 131071, 8, 0, 65536, 8, 0, 65551, 8, 0, 65552, 8, 0, 196607, 8, 0, 131072, 8, 0, 131087, 8, 0, 131088, 8, 0, 262143, 8, 0, 196608, 8, 0, 196623, 8, 0, 196624, 8, 0, 327679, 8, 0, 262144, 8, 0, 262151, 3, 0, 262152, 2, 0, 262153, 1, 0, 262154, 2, 0, 262155, 4, 0, 262156, 4, 0, 262157, 1, 0, 262158, 5, 0, 262159, 8, 0, 262160, 8, 0, 393215, 8, 0, 327680, 8, 0, 327695, 8, 0, 327696, 8, 0, 458751, 8, 0, 393216, 8, 0, 393217, 4, 0, 393218, 2, 0, 393219, 2, 0, 393231, 8, 0, 393232, 8, 0, 524287, 8, 0, 458752, 8, 0, 458753, 1, 0, 458754, 3, 0, 458755, 4, 0, 458767, 8, 0, 458768, 8, 0, 589823, 8, 0, 524288, 8, 0, 524289, 8, 0, 524290, 8, 0, 524291, 8, 0, 524292, 8, 0, 524293, 8, 0, 524294, 8, 0, 524295, 8, 0, 524296, 8, 0, 524297, 8, 0, 524298, 8, 0, 524299, 8, 0, 524300, 8, 0, 524301, 8, 0, 524302, 8, 0, 524303, 8, 0, 524304, 8, 0, 655359, 8, 0, 589824, 8, 0, 589825, 8, 0, 589826, 8, 0, 589827, 8, 0, 589828, 8, 0, 589829, 8, 0, 589830, 8, 0, 589831, 8, 0, 589832, 8, 0, 589833, 8, 0, 589834, 8, 0, 589835, 8, 0, 589836, 8, 0, 589837, 8, 0, 589838, 8, 0, 589839, 8, 0, 589840, 8, 0 )
+
+[node name="Negro" type="Sprite" parent="Escena"]
+position = Vector2( 506, 306 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="Player" parent="Escena" instance=ExtResource( 4 )]
+position = Vector2( 169, 114 )
+
+[node name="scene2Pos" type="Position2D" parent="Escena"]
+
+[node name="cajas" type="Node2D" parent="Escena"]
+
+[node name="Node2D" parent="Escena/cajas" instance=ExtResource( 7 )]
+position = Vector2( 912, 464 )
+
+[node name="KinematicBody2D" parent="Escena/cajas/Node2D" index="0"]
+mosca = true
+
+[node name="Node2D3" parent="Escena/cajas" instance=ExtResource( 7 )]
+position = Vector2( 912, 208 )
+
+[node name="KinematicBody2D" parent="Escena/cajas/Node2D3" index="0"]
+mosca = true
+
+[node name="Node2D2" parent="Escena/cajas" instance=ExtResource( 7 )]
+position = Vector2( 586, 440 )
+
+[node name="KinematicBody2D" parent="Escena/cajas/Node2D2" index="0"]
+position = Vector2( 793.333, 80 )
+mosca = true
+
+[node name="Node2D4" parent="Escena/cajas" instance=ExtResource( 7 )]
+position = Vector2( 640, 464 )
+
+[node name="Node2D5" parent="Escena/cajas" instance=ExtResource( 7 )]
+position = Vector2( 528, 200 )
+
+[node name="Node2D6" parent="Escena/cajas" instance=ExtResource( 7 )]
+position = Vector2( 616, 200 )
+
+[node name="Moscas" type="Node2D" parent="Escena"]
+
+[node name="Camera2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512, 320 )
+zoom = Vector2( 0.58, 0.58 )
+script = null
+
+[node name="vidas" parent="Camera2D" index="0"]
+margin_left = -464.0
+margin_top = -272.0
+margin_right = -424.0
+margin_bottom = -258.0
+
+[node name="moscas" parent="Camera2D" index="1"]
+margin_left = -296.0
+margin_top = -248.0
+margin_right = -176.0
+margin_bottom = -207.0
+
+[connection signal="body_entered" from="toLevel/level1_4to1_2" to="toLevel/level1_4to1_2" method="_on_level1_4to1_2_body_entered"]
+
+[editable path="Escena/cajas/Node2D"]
+[editable path="Escena/cajas/Node2D3"]
+[editable path="Escena/cajas/Node2D2"]
+[editable path="Camera2D"]

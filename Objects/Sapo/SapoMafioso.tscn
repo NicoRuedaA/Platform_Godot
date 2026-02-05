@@ -1,0 +1,326 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Scripts/playerMovement.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/lengua/tongueSpriteSheet.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/sapoSpriteSheet.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 38.0
+height = 60.0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lengua:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("lenguaColider/lenguaColider:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("lenguaColider:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("lenguaColider/lenguaColider:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "bite"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lengua:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "fall"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lengua:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 6, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lengua:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "jump"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lengua:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "run"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "RESET"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "bite"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "fall"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachine" id=5]
+states/RESET/node = SubResource( 8 )
+states/RESET/position = Vector2( 135, 64 )
+states/bite/node = SubResource( 9 )
+states/bite/position = Vector2( 469, -19 )
+states/fall/node = SubResource( 15 )
+states/fall/position = Vector2( 440, 351 )
+states/idle/node = SubResource( 4 )
+states/idle/position = Vector2( 347, 94 )
+states/jump/node = SubResource( 16 )
+states/jump/position = Vector2( 509, 273 )
+states/run/node = SubResource( 17 )
+states/run/position = Vector2( 563, 142 )
+transitions = [ "idle", "bite", SubResource( 10 ), "bite", "idle", SubResource( 11 ), "idle", "run", SubResource( 18 ), "idle", "jump", SubResource( 19 ), "jump", "fall", SubResource( 20 ), "run", "idle", SubResource( 21 ), "fall", "idle", SubResource( 22 ) ]
+start_node = "idle"
+graph_offset = Vector2( -85, -149.25 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+
+[sub_resource type="GDScript" id=24]
+script/source = "extends Area2D
+
+var player
+
+func _ready():
+	player = get_parent()
+
+func _on_Area2D_body_entered(body):
+	if(body.is_in_group(\"object\")):
+		body.destroy()
+	elif(body.is_in_group(\"enemy\")):
+		Global.restarMosca()
+		body.matar()
+"
+
+[sub_resource type="CircleShape2D" id=23]
+radius = 64.4981
+
+[node name="SapoMafioso" type="KinematicBody2D" groups=["player"]]
+position = Vector2( 1081, 224 )
+script = ExtResource( 1 )
+
+[node name="idle" type="Sprite" parent="."]
+position = Vector2( 3, 15 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+hframes = 6
+vframes = 2
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+position = Vector2( 0, 15 )
+shape = SubResource( 1 )
+
+[node name="ray" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 85 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/RESET = SubResource( 2 )
+anims/bite = SubResource( 7 )
+anims/fall = SubResource( 12 )
+anims/idle = SubResource( 3 )
+anims/jump = SubResource( 13 )
+anims/run = SubResource( 14 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 5 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 6 )
+
+[node name="lengua" type="Sprite" parent="."]
+position = Vector2( -83, -8 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+hframes = 3
+
+[node name="lenguaColider" type="Area2D" parent="."]
+script = SubResource( 24 )
+
+[node name="lenguaColider" type="CollisionShape2D" parent="lenguaColider"]
+scale = Vector2( 0.25, 0.25 )
+shape = SubResource( 23 )
+
+[connection signal="body_entered" from="lenguaColider" to="lenguaColider" method="_on_Area2D_body_entered"]
