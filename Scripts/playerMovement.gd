@@ -29,7 +29,7 @@ const FALL_GRAVITY_MULTIPLIER = 1.5  # Cae más rápido de lo que sube
 
 
 func _ready():
-	Global.health = health
+	self.health = Global.health
 
 
 func _physics_process(delta: float) -> void:
@@ -136,8 +136,13 @@ func _check_enemy_collisions():
 	"""Verifica colisiones con enemigos durante el movimiento"""
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.is_in_group("enemy") and not collision.collider.is_in_group("object"):
-			take_damage()
+		if collision and collision.collider:
+			var body = collision.collider
+			
+			# Ahora es seguro llamar a is_in_group
+			if body.is_in_group("enemy") and not body.is_in_group("object"):
+				take_damage()
+
 
 
 func take_damage():
@@ -154,7 +159,6 @@ func take_damage():
 	
 	# Reducir vida
 	Global.restarVida()
-	Global.restarMosca()
 	
 	# Parpadeo visual (opcional)
 	_start_damage_flash()

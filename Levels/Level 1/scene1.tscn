@@ -127,6 +127,7 @@ position = Vector2( 17, -21 )
 
 [node name="Player" parent="Escena" instance=ExtResource( 13 )]
 position = Vector2( -1232, -438 )
+health = 5
 
 [node name="Cajas" type="Node2D" parent="Escena"]
 position = Vector2( 2439, -1933 )

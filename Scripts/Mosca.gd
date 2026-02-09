@@ -7,12 +7,11 @@ export var direction = true
 
 
 func _physics_process(delta):
-		for index in get_slide_count():
-			var body = get_slide_collision(index)
-		#	if(body.collider.name!="TileMap"):
-		#		print(body.collider.name)
-			if body.collider.is_in_group("player"):
-				body.collider.getDamage()
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("player"):
+			# La mosca solo le quita vida al jugador
+			collision.collider.take_damage()
 		#			print("lenguetaso")
 		#			var dir
 					#if(position.x<body.collider.position.x):

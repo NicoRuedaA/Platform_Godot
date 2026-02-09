@@ -2,7 +2,8 @@ extends Node2D
 
 
 var from_level
-var moscas
+var moscas = 10
+var health = 3 # Define la vida inicial aquí
 
 
 var level1_1 = "res://Levels/Level 1/scene1.tscn"
@@ -13,12 +14,12 @@ var level2 = "res://Levels/Level 2/level 2.tscn"
 var GAMEOVER = "res://Levels/gameover.tscn"
 var win = "res://Levels/win.tscn"
 
-var health
+
 
 func _ready():
 	#hauriem de referenciar al jugador i igualar la variable heath. Mha faltat temps
 
-	moscas = 10
+	pass
 	
 func _process(delta):
 	if(health<1):
@@ -34,15 +35,14 @@ func restarMosca():
 		
 		
 		
-func reset():
-	print("se acabo mamahuevo")
-	get_tree().change_scene(GAMEOVER)
 	
 func setHealth(x):
 	health = x
 	
 func restarVida():
 	health -=1
+	if health <= 0:
+		reset()
 	
 	
 func goToBoss():
@@ -50,4 +50,9 @@ func goToBoss():
 
 func win():
 	get_tree().change_scene(win)
+	
+func reset():
+	health = 3 # Resetear vida al morir de verdad
+	moscas = 10
+	get_tree().change_scene(GAMEOVER)
 		
