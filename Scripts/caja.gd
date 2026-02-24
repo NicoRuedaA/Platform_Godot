@@ -1,33 +1,24 @@
 extends StaticBody2D
 
-var broke
-var moscaPrefab
+var broke = false
+var time = 0.0
 export var mosca = false
 
-var time 
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	broke = false
-	time= 0
-
-#funcion que detecte la colision
+	time = 0.0
 
 func _process(delta):
-	if(broke):
-		time+=delta
-		if(time>0.5):
-			func matar():
-		queue_free()
+	if broke:
+		time += delta
+		if time > 0.5:
+			queue_free() # Se elimina después de medio segundo
 
-func romper():
-	if(mosca):
-		pass
-	
-	
-		#play animationW
-		#cuando acabe la animacion
-		#if mosca
-			#instanciar mosca
-		#eliminar caja
+# Esta es la función que debe llamar la lengua
+func destroy():
+	if not broke:
+		broke = true
+		# Aquí podrías poner: $AnimationPlayer.play("romper")
+		if mosca:
+			# Aquí iría el código para spawnear una mosca si lo necesitas
+			pass

@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Practica individual"
-run/main_scene="res://Levels/Level 1/scene1.tscn"
+run/main_scene="res://Levels/Level 2/level 2.tscn"
 config/icon="res://icon.png"
 
 [autoload]

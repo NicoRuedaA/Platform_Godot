@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/UI/sapo.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/UI/mosca.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/cameraController.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/moscasUI.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/BossUI.gd" type="Script" id=5]
 
 [node name="Camera2D" type="Camera2D"]
 position = Vector2( 0, -2 )

@@ -265,11 +265,20 @@ func _ready():
 	player = get_parent()
 
 func _on_Area2D_body_entered(body):
-	if(body.is_in_group(\"object\")):
-		body.destroy()
-	elif(body.is_in_group(\"enemy\")):
+	# 1. Si golpeamos al Jefe
+	if body.has_method(\"take_damage\"):
+		body.take_damage()
+		
+		# Buscamos el colisionador de forma segura para apagarlo
+		for child in get_children():
+			if child is CollisionShape2D:
+				child.set_deferred(\"disabled\", true)
+		return 
+
+	# 2. Si golpeamos una mosca normal
+	elif body.is_in_group(\"enemy\"):
 		Global.restarMosca()
-		body.matar()
+		body.queue_free()
 "
 
 [sub_resource type="CircleShape2D" id=23]
@@ -285,7 +294,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
 hframes = 6
 vframes = 2
-frame = 6
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2( 0, 15 )

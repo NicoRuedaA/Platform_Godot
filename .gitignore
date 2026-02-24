@@ -15,3 +15,21 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+
+
+# Binarios y carpetas de exportación
+# (Si sueles exportar a una carpeta llamada 'build' o 'dist')
+build/
+dist/
+
+# Archivos de usuario y temporales
+.mono/
+.vs/
+.idea/
+.vscode/
+*.mtn
+*.tmp
+
+# Archivos de configuración local del editor
+override.cfg

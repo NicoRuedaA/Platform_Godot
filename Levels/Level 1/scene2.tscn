@@ -3,25 +3,26 @@
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/backgrounds/negro.jpg" type="Texture" id=2]
 [ext_resource path="res://Objects/camera/Camera2D.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/Sapo/SapoMafioso.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Sapo/lengua.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/boceto.jpg" type="Texture" id=5]
 [ext_resource path="res://Objects/Box/box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Level 1/toScene.gd" type="Script" id=7]
 [ext_resource path="res://Objects/Mosca/MoscaEstatica/moscaEstatica.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/Mosca/MoscaMovimiento/MoscaMovimient.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/moscasUI.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 149.5, 76.5 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 165, 41 )
-
 [node name="Node2D" type="Node2D"]
-position = Vector2( 8, -4 )
+position = Vector2( 44, 11 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 424, 292 )
 moveY = false
+
+[node name="moscas" parent="Camera2D" index="1"]
+script = ExtResource( 10 )
 
 [node name="Escena" type="Node2D" parent="."]
 
@@ -162,16 +163,8 @@ script = ExtResource( 7 )
 position = Vector2( 139.5, 66.5 )
 shape = SubResource( 1 )
 
-[node name="to1_1" type="Area2D" parent="toLevel"]
-script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="toLevel/to1_1"]
-position = Vector2( 339, -317 )
-shape = SubResource( 2 )
-
 [connection signal="body_entered" from="toLevel/to1_3" to="toLevel/to1_3" method="_on_to1_3_body_entered"]
 [connection signal="body_entered" from="toLevel/to1_4" to="toLevel/to1_4" method="_on_to1_4_body_entered"]
-[connection signal="body_entered" from="toLevel/to1_1" to="toLevel/to1_1" method="_on_to1_1_body_entered"]
 
 [editable path="Camera2D"]
 [editable path="Escena/Cajas/Node2D3"]

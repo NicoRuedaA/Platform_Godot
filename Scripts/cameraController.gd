@@ -1,17 +1,21 @@
 extends Camera2D
 
-
-#onready var player =  get_tree().get_nodes_in_group("player")
-onready var player = get_parent().get_node("Escena/Player")
+var player = null
 export var moveY = true
-export var moveX =true
+export var moveX = true
+
+func _ready():
+	# Buscamos al primer nodo en el grupo "player"
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		player = players[0]
+	else:
+		print("Error: No se encontró ningún nodo en el grupo 'player'")
 
 func _process(delta):
+	# Verificamos que el player exista antes de pedirle la posición
 	if player != null and is_instance_valid(player):
-		position = player.position
-	if(moveY):
-		var prueba = player.position.y
-		self.position.y = prueba
-	if(moveX):
-		var prueba = player.position.x
-		self.position.x = prueba
+		if moveX:
+			position.x = player.position.x
+		if moveY:
+			position.y = player.position.y

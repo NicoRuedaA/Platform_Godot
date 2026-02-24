@@ -1,4 +1,8 @@
 extends Label
 
-func _process(_delta):
-	text = "x " + str(Global.moscas)
+var moscasRes
+var textToPrint
+
+func _process(delta):
+
+	text = ("x " + str(Global.moscas))

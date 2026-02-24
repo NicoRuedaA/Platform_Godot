@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/backgrounds/negro.jpg" type="Texture" id=2]
-[ext_resource path="res://Objects/Sapo/SapoMafioso.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Sapo/lengua.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/camera/Camera2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Level 1/toScene.gd" type="Script" id=5]
 [ext_resource path="res://Objects/Box/box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/moscasUI.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 253, 33 )
@@ -28,6 +29,7 @@ margin_left = -253.0
 margin_top = -263.0
 margin_right = -133.0
 margin_bottom = -222.0
+script = ExtResource( 7 )
 
 [node name="Sapo" parent="Camera2D/moscas" index="0"]
 z_index = 3
@@ -40,7 +42,7 @@ z_index = 3
 [node name="TileMap" type="TileMap" parent="Escena"]
 tile_set = ExtResource( 1 )
 format = 1
-tile_data = PoolIntArray( 65535, 8, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 8, 0, 9, 8, 0, 10, 8, 0, 14, 8, 0, 15, 8, 0, 16, 8, 0, 131071, 8, 0, 65536, 8, 0, 65551, 8, 0, 65552, 8, 0, 196607, 8, 0, 131072, 8, 0, 131087, 8, 0, 131088, 8, 0, 262143, 8, 0, 196608, 8, 0, 196623, 8, 0, 196624, 8, 0, 327679, 8, 0, 262144, 8, 0, 262159, 8, 0, 262160, 8, 0, 393215, 8, 0, 327680, 8, 0, 327681, 4, 0, 327682, 6, 0, 327683, 6, 0, 327684, 3, 0, 327685, 4, 0, 327686, 2, 0, 327687, 5, 0, 327688, 3, 0, 327695, 8, 0, 327696, 8, 0, 458751, 8, 0, 393216, 8, 0, 393231, 8, 0, 393232, 8, 0, 524287, 8, 0, 458752, 8, 0, 458767, 8, 0, 458768, 8, 0, 589823, 8, 0, 524288, 8, 0, 524289, 8, 0, 524290, 8, 0, 524291, 8, 0, 524292, 8, 0, 524293, 8, 0, 524294, 8, 0, 524295, 8, 0, 524296, 8, 0, 524297, 8, 0, 524298, 8, 0, 524299, 8, 0, 524300, 8, 0, 524301, 8, 0, 524302, 8, 0, 524303, 8, 0, 524304, 8, 0, 655359, 8, 0, 589824, 8, 0, 589825, 8, 0, 589826, 8, 0, 589827, 8, 0, 589828, 8, 0, 589829, 8, 0, 589830, 8, 0, 589831, 8, 0, 589832, 8, 0, 589833, 8, 0, 589834, 8, 0, 589835, 8, 0, 589836, 8, 0, 589837, 8, 0, 589838, 8, 0, 589839, 8, 0, 589840, 8, 0 )
+tile_data = PoolIntArray( 65535, 8, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 8, 0, 9, 8, 0, 10, 8, 0, 14, 8, 0, 15, 8, 0, 16, 8, 0, 131071, 8, 0, 65536, 8, 0, 65551, 8, 0, 65552, 8, 0, 196607, 8, 0, 131072, 8, 0, 131087, 8, 0, 131088, 8, 0, 262143, 8, 0, 196608, 8, 0, 196623, 8, 0, 196624, 8, 0, 327679, 8, 0, 262144, 8, 0, 262156, 4, 0, 262157, 3, 0, 262158, 1, 0, 262159, 8, 0, 262160, 8, 0, 393215, 8, 0, 327680, 8, 0, 327681, 4, 0, 327682, 6, 0, 327683, 6, 0, 327684, 3, 0, 327685, 4, 0, 327686, 2, 0, 327687, 5, 0, 327688, 3, 0, 327695, 8, 0, 327696, 8, 0, 458751, 8, 0, 393216, 8, 0, 393231, 8, 0, 393232, 8, 0, 524287, 8, 0, 458752, 8, 0, 458767, 8, 0, 458768, 8, 0, 589823, 8, 0, 524288, 8, 0, 524289, 8, 0, 524290, 8, 0, 524291, 8, 0, 524292, 8, 0, 524293, 8, 0, 524294, 8, 0, 524295, 8, 0, 524296, 8, 0, 524297, 8, 0, 524298, 8, 0, 524299, 8, 0, 524300, 8, 0, 524301, 8, 0, 524302, 8, 0, 524303, 8, 0, 524304, 8, 0, 655359, 8, 0, 589824, 8, 0, 589825, 8, 0, 589826, 8, 0, 589827, 8, 0, 589828, 8, 0, 589829, 8, 0, 589830, 8, 0, 589831, 8, 0, 589832, 8, 0, 589833, 8, 0, 589834, 8, 0, 589835, 8, 0, 589836, 8, 0, 589837, 8, 0, 589838, 8, 0, 589839, 8, 0, 589840, 8, 0 )
 
 [node name="Negro" type="Sprite" parent="Escena"]
 position = Vector2( 518, 318 )
@@ -83,7 +85,7 @@ position = Vector2( 216, 184 )
 [node name="toLevel" type="Node2D" parent="."]
 
 [node name="level1_3to1_2" type="Area2D" parent="toLevel"]
-position = Vector2( 512, -32 )
+position = Vector2( 533, -11 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="toLevel/level1_3to1_2"]

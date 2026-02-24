@@ -26,9 +26,16 @@ func _process(delta):
 		reset()
 
 func restarMosca():
-	moscas-=1
-	if(moscas<=0):
-		if(get_tree().get_current_scene().get_name() == "level 2"):
+	moscas -= 1
+	
+	# Condición específica: Si quedan exactamente 4 moscas, cambiamos al nivel 1.2
+	if moscas == 4:
+		get_tree().change_scene(level1_2)
+		return # Salimos de la función para que no ejecute lo de abajo en este frame
+
+	# Lógica original para cuando llegas a 0 moscas
+	if moscas <= 0:
+		if get_tree().get_current_scene().get_name() == "level 2":
 			win()
 		else:
 			goToBoss()

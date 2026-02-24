@@ -7,5 +7,6 @@
 
 [node name="Character" parent="." index="0"]
 script = ExtResource( 1 )
+direction = true
 
 [node name="CollisionShape2D" parent="Character" index="0" groups=["enemy"]]
