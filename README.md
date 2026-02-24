@@ -1,4 +1,3 @@
-<img src="https://github.com/NicoRuedaA/Platform_Godot/blob/main/captura.png?raw=true" alt="My game">
 <img src="https://github.com/NicoRuedaA/Platform_Godot/blob/main/DOCUMENTACION_page-0001.jpg?raw=true" alt="Doc 1">
 <img src="https://github.com/NicoRuedaA/Platform_Godot/blob/main/DOCUMENTACION_page-0002.jpg?raw=true" alt="Doc 2">
 <img src="https://github.com/NicoRuedaA/Platform_Godot/blob/main/DOCUMENTACION_page-0003.jpg?raw=true" alt="Doc 3">
