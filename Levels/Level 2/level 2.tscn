@@ -64,7 +64,17 @@ position = Vector2( 444, 936 )
 
 [node name="Camera2D2" parent="." instance=ExtResource( 7 )]
 
+[node name="vidas" parent="Camera2D2" index="0"]
+margin_left = -627.0
+margin_top = -315.0
+margin_right = -587.0
+margin_bottom = -301.0
+
 [node name="moscas" parent="Camera2D2" index="1"]
+margin_left = -480.0
+margin_top = -314.0
+margin_right = -360.0
+margin_bottom = -273.0
 text = "asdasda"
 
 [editable path="Camera2D2"]

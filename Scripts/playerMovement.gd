@@ -13,6 +13,9 @@ var is_jumping = false
 var is_biting = false
 var bite_timer = 0.0
 
+# Variable manual para el salto con tecla física W o Flecha Arriba
+var _was_up_pressed = false
+
 # Sistema de doble salto
 var jumps_available = 2
 var current_jumps = 0
@@ -38,8 +41,20 @@ func _physics_process(delta: float) -> void:
 	# 1. Verificar si los enemigos tocan al jugador
 	_check_enemy_collisions()
 	
-	# 2. Obtener Input y estado del suelo
-	var input_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	# --- LÓGICA MANUAL PARA SALTO (W o Flecha Arriba) ---
+	var is_up_pressed = Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP)
+	var up_just_pressed = is_up_pressed and not _was_up_pressed
+	var up_just_released = not is_up_pressed and _was_up_pressed
+	_was_up_pressed = is_up_pressed # Guardamos el estado para el siguiente frame
+	# ----------------------------------------------------
+	
+	# 2. Obtener Input leyendo las teclas físicas WASD y Flechas
+	var input_x = 0.0
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+		input_x += 1.0
+	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+		input_x -= 1.0
+		
 	var is_running = Input.is_key_pressed(KEY_SHIFT)
 	var on_ground = ray_ground.is_colliding()
 	
@@ -62,14 +77,16 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0
 		is_jumping = false
 		current_jumps = 0
-		if Input.is_action_just_pressed("up"):
+		
+		# Salto normal
+		if up_just_pressed:
 			velocity.y = JUMP_FORCE
 			is_jumping = true
 			current_jumps = 1
 			state_machine.travel("jump")
 	else:
 		# Doble salto
-		if Input.is_action_just_pressed("up") and current_jumps < jumps_available:
+		if up_just_pressed and current_jumps < jumps_available:
 			velocity.y = DOUBLE_JUMP_FORCE
 			current_jumps += 1
 			state_machine.travel("jump")
@@ -82,7 +99,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity_force * delta
 		
 		# Salto variable (soltar tecla = salto corto)
-		if velocity.y < 0 and Input.is_action_just_released("up"):
+		if velocity.y < 0 and up_just_released:
 			velocity.y *= JUMP_CUT_MULTIPLIER
 		
 		velocity.y = min(velocity.y, MAX_FALL_SPEED)
@@ -105,7 +122,7 @@ func _physics_process(delta: float) -> void:
 		state_machine.travel("bite")
 		speed = 0 # El jugador se detiene al atacar
 		
-		# RE-ACTIVAR LA LENGUA (Para que golpee una vez al jefe)
+		# RE-ACTIVAR LA LENGUA
 		_set_tongue_collision(false)
 	
 	if is_biting:
@@ -130,7 +147,7 @@ func _physics_process(delta: float) -> void:
 	# ===== APLICAR MOVIMIENTO FINAL =====
 	velocity = move_and_slide(velocity, Vector2.UP)
 
-# Función auxiliar para activar/desactivar el colisionador de la lengua sin errores
+# Función auxiliar para activar/desactivar el colisionador
 func _set_tongue_collision(disabled_status):
 	if m_tongueColider:
 		for child in m_tongueColider.get_children():
@@ -160,7 +177,7 @@ func take_damage():
 	_start_damage_flash()
 	
 	if Global.health <= 0:
-		return # El Global ya gestiona el reset()
+		return 
 
 	yield(get_tree().create_timer(invulnerability_duration), "timeout")
 	invulnerable = false
@@ -178,14 +195,10 @@ func getDamage():
 # SEÑAL: Conecta el body_entered de tu Area2D de la lengua a esta función
 func _on_Area2D_body_entered(body):
 	if is_biting:
-		# Si es el jefe (o algo con vida), le hacemos daño
 		if body.has_method("take_damage"):
 			body.take_damage()
-			# Apagamos la lengua inmediatamente para que no le quite toda la vida de golpe
 			_set_tongue_collision(true) 
 			return
-
-		# Si es una mosca normal
 		elif body.is_in_group("enemy"):
 			Global.restarMosca()
 			body.queue_free()

@@ -19,16 +19,16 @@ zoom = Vector2( 0.58, 0.58 )
 script = null
 
 [node name="vidas" parent="Camera2D" index="0"]
-margin_left = -400.0
-margin_top = -264.0
-margin_right = -360.0
-margin_bottom = -250.0
+margin_left = -330.0
+margin_top = -188.0
+margin_right = -290.0
+margin_bottom = -174.0
 
 [node name="moscas" parent="Camera2D" index="1"]
-margin_left = -253.0
-margin_top = -263.0
-margin_right = -133.0
-margin_bottom = -222.0
+margin_left = -183.0
+margin_top = -187.0
+margin_right = -63.0
+margin_bottom = -146.0
 script = ExtResource( 7 )
 
 [node name="Sapo" parent="Camera2D/moscas" index="0"]

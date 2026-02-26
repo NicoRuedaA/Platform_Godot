@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Practica individual"
-run/main_scene="res://Levels/Level 2/level 2.tscn"
+run/main_scene="res://Levels/Level 1/scene1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -22,6 +22,8 @@ Global="*res://Global.gd"
 
 window/size/width=1920
 window/size/height=1080
+window/size/borderless=true
+window/size/fullscreen=true
 
 [input]
 

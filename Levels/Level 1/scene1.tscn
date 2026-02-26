@@ -176,7 +176,17 @@ position = Vector2( -543, 1103 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 9 )]
 
+[node name="vidas" parent="Camera2D" index="0"]
+margin_left = -615.0
+margin_top = -335.0
+margin_right = -575.0
+margin_bottom = -321.0
+
 [node name="moscas" parent="Camera2D" index="1"]
+margin_left = -468.0
+margin_top = -334.0
+margin_right = -348.0
+margin_bottom = -293.0
 text = "asdasda"
 script = ExtResource( 11 )
 
