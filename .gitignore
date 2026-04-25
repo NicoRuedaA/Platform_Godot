@@ -33,3 +33,9 @@ dist/
 
 # Archivos de configuración local del editor
 override.cfg
+
+*.import
+*.zip
+.zip
+default_env.tres
+tilemap.tres
