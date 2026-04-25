@@ -5,7 +5,7 @@
 [![Export](https://img.shields.io/badge/Export-HTML5%20%7C%20Desktop-green)]()
 [![Status](https://img.shields.io/badge/Status-Complete-brightgreen)]()
 
-![screenshot](captura.png)
+![screenshot](/Docs/captura.png)
 
 A 2D platformer built with **Godot Engine 3** and GDScript. Features physics-based character movement, animated sprites, tilemap-based level design, and a working HTML5 export playable in the browser.
 
