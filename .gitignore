@@ -31,8 +31,11 @@ dist/
 *.mtn
 *.tmp
 
-# Archivos de configuración local del editor
-override.cfg
+# Archivos de exportación (no committed)
+Export/
+
+# Templates (no committed)
+README_TEMPLATE.md
 
 *.import
 *.zip
